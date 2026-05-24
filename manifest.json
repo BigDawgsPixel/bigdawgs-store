@@ -1,87 +1,70 @@
 {
-  "name": "BigDawg's Store — What's Hot Today",
+  "name": "BigDawg's Store — Hot Deals Daily",
   "short_name": "BigDawg's Store",
-  "description": "The internet's most exclusive daily trending product drops. Curated by AI. Backed by data.",
+  "description": "Discover today's most viral trending products. Updated daily with AI-powered deals across fashion, tech, beauty, health & more.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#080808",
-  "theme_color": "#D4AF37",
   "orientation": "portrait-primary",
-  "categories": ["shopping", "lifestyle"],
+  "background_color": "#0a0a0a",
+  "theme_color": "#D4AF37",
   "lang": "en-US",
-  "icons": [
-    {
-      "src": "icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle", "entertainment"],
   "screenshots": [
     {
-      "src": "screenshots/home.png",
-      "sizes": "1280x720",
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "Today's Trending Drops"
+      "form_factor": "narrow",
+      "label": "BigDawg's Store Home Screen"
     }
+  ],
+  "icons": [
+    { "src": "/icons/icon-72.png",  "sizes": "72x72",   "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "shortcuts": [
     {
-      "name": "Today's Drops",
-      "short_name": "Drops",
-      "description": "See what's trending right now",
-      "url": "/#products",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "name": "Fashion Deals",
+      "short_name": "Fashion",
+      "description": "Trending fashion products today",
+      "url": "/?cat=fashion",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
-      "name": "Fashion",
-      "short_name": "Fashion",
-      "description": "Trending fashion picks",
-      "url": "/?cat=Fashion",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "name": "Tech Deals",
+      "short_name": "Tech",
+      "description": "Trending tech products today",
+      "url": "/?cat=tech",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Beauty Deals",
+      "short_name": "Beauty",
+      "description": "Trending beauty products today",
+      "url": "/?cat=beauty",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     }
-  ]
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "prefer_related_applications": false,
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }
