@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BigDawg's Store — What's Hot Today</title>
+  <meta name="description" content="The internet's most exclusive daily trending product drops. Curated by AI. Backed by data. Delivered with class."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F0D060;
+      --gold-dark: #A8860A;
+      --black: #080808;
+      --black2: #111111;
+      --black3: #1a1a1a;
+      --black4: #222222;
+      --white: #FAFAFA;
+      --white2: #e8e8e8;
+      --gray: #888888;
+      --red: #C0392B;
+      --green: #27AE60;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      background: var(--gold);
+      color: var(--black);
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .topbar span { margin: 0 12px; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,8,8,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--white2);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,55,0.08) 0%, transparent 70%),
+                  linear-gradient(180deg, #0d0d0d 0%, #080808 100%);
+    }
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before { content: "●"; font-size: 8px; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero p {
+      font-size: 18px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 16px 40px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 30px rgba(212,175,55,0.25);
+    }
+    .btn-primary:hover { background: var(--gold-light); box-shadow: 0 0 50px rgba(212,175,55,0.4); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 16px 40px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.2);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+    .hero-divider {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* ─── SECTION ─── */
+    section { padding: 80px 48px; max-width: 1400px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .section-subtitle { color: var(--gray); font-size: 16px; margin-top: 12px; font-weight: 300; }
+
+    /* ─── FILTERS ─── */
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid rgba(212,175,55,0.2);
+      background: transparent;
+      color: var(--gray);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    /* ─── PRODUCT GRID ─── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--black2);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      border-color: rgba(212,175,55,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.1);
+    }
+    .card-header {
+      padding: 24px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .category-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .growth-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--black);
+      background: var(--gold);
+      padding: 4px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .card-body { padding: 20px 24px; flex: 1; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .product-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .product-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
+    .meta-value { font-size: 15px; font-weight: 600; color: var(--white); }
+    .meta-value.gold { color: var(--gold); }
+    .why-tag {
+      font-size: 11px;
+      color: var(--gray);
+      font-style: italic;
+      line-height: 1.5;
+      border-left: 2px solid rgba(212,175,55,0.3);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+    .card-footer { padding: 0 24px 24px; }
+    .btn-shop {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.35);
+      color: var(--gold);
+      padding: 13px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-shop:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .hot-indicator {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+    }
+
+    /* ─── HIDDEN CARDS ─── */
+    .product-card.hidden { display: none; }
+
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      background: var(--gold);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-item {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 32px;
+    }
+    .marquee-dot { color: rgba(0,0,0,0.4); }
+
+    /* ─── HOW IT WORKS ─── */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+    .step {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--black2);
+      border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: rgba(212,175,55,0.4); }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: rgba(212,175,55,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .step p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black2);
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding: 60px 48px 32px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; max-width: 1000px; margin: 0 auto 48px; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--white); }
+    .footer-desc { font-size: 13px; color: var(--gray); line-height: 1.7; max-width: 280px; }
+    .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--gray); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .footer-bottom a { color: rgba(212,175,55,0.4); text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .hero-stats { gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 48px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>🔥 UPDATED DAILY BY AI</span>
+  <span>·</span>
+  <span>⚡ 34 TRENDING PRODUCTS TODAY</span>
+  <span>·</span>
+  <span>💎 CURATED. VERIFIED. EXCLUSIVE.</span>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#">BigDawg<span>'s Store</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Today's Drops</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#categories">Categories</a></li>
+  </ul>
+  <a class="nav-cta" href="#products">Shop Now →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🔴 Live Trending — Updated Daily</div>
+    <h1>What the Internet<br/>Is Buying <span class="gold">Right Now</span></h1>
+    <p>AI-curated trending products refreshed every morning. We track viral growth across TikTok, Reddit, Pinterest and Google before the masses find out.</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#products">See Today's Drops</a>
+      <a class="btn-secondary" href="#how">How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">34</div>
+        <div class="stat-label">Products Today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">9,900%</div>
+        <div class="stat-label">Top Growth</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">10×</div>
+        <div class="stat-label">Daily Updates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">Free</div>
+        <div class="stat-label">Always</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">🔥 Barrel Leg Jeans +9,900%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">⚡ Neckband Speaker +9,900%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">💎 High Speed Hair Dryer +9,000%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🤖 AI Video Generator +8,900%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🎧 AI Earbuds +8,400%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🛋️ Boneless Couch +8,300%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🚶 Walking Pad +7,700%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">💊 GLP-1 Supplements +7,200%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🔥 Barrel Leg Jeans +9,900%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">⚡ Neckband Speaker +9,900%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">💎 High Speed Hair Dryer +9,000%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🤖 AI Video Generator +8,900%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🎧 AI Earbuds +8,400%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🛋️ Boneless Couch +8,300%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">🚶 Walking Pad +7,700%</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">💊 GLP-1 Supplements +7,200%</span><span class="marquee-dot">◆</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-header">
+    <div class="section-label">✦ Today's Curated Drops ✦</div>
+    <h2 class="section-title">What's Trending Right Now</h2>
+    <p class="section-subtitle">Ranked by viral growth rate. Updated daily at 6 AM Pacific.</p>
+  </div>
+
+  <div class="filters" id="filterBar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">All Drops</button>
+    <button class="filter-btn" onclick="filterProducts('Fashion', this)">Fashion</button>
+    <button class="filter-btn" onclick="filterProducts('Tech', this)">Tech & AI</button>
+    <button class="filter-btn" onclick="filterProducts('Health', this)">Health</button>
+    <button class="filter-btn" onclick="filterProducts('Skincare', this)">Skincare</button>
+    <button class="filter-btn" onclick="filterProducts('Home', this)">Home</button>
+    <button class="filter-btn" onclick="filterProducts('Fitness', this)">Fitness</button>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+
+    <div class="product-card" data-category="Fashion">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Fashion</span>
+        <span class="growth-badge">▲ 9,900%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Barrel Leg Jeans</div>
+        <div class="product-desc">Wide-leg jeans with a barrel/curved silhouette — the jean of 2026. Y2K revival meets modern street style.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$89</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">10–20%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">LTK / ShopMy</span></div>
+        </div>
+        <div class="why-tag">Fashion TikTok, Y2K revival, replacing skinny jeans entirely, celebrity adoption</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Barrel+Leg+Jeans&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Tech">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Tech & AI</span>
+        <span class="growth-badge">▲ 9,900%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Neckband Speaker</div>
+        <div class="product-desc">A horseshoe-shaped wearable speaker that rests around your neck, delivering immersive personal audio for gaming, streaming, and calls.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$100</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">4–6%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Exploding growth driven by gaming, remote work, and home theater trends</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Neckband+Speaker&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health Skincare">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Beauty</span>
+        <span class="growth-badge">▲ 9,000%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">High Speed Hair Dryer</div>
+        <div class="product-desc">Brushless motor hair dryer that cuts dry time by 70% — Dyson-style performance at a fraction of the price.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$79</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–5%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Dyson Supersonic dupe market, beauty influencers, massive TikTok reviews</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=High+Speed+Hair+Dryer&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Tech">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Tech & AI</span>
+        <span class="growth-badge">▲ 8,900%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">AI Video Generator</div>
+        <div class="product-desc">AI tool that generates scroll-stopping short-form videos from text prompts — every creator's secret weapon.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$29/mo</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">20–30%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Affiliate</span></div>
+        </div>
+        <div class="why-tag">Creator economy, TikTok/Reels demand, everyone becoming a content creator</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://invideo.io/?ref=YOUR_TAG" target="_blank" rel="noopener">Try Free →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Tech">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Tech & AI</span>
+        <span class="growth-badge">▲ 8,400%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">AI Earbuds</div>
+        <div class="product-desc">Earbuds with real-time AI translation, noise cancellation and voice assistant — the future of communication, worn daily.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$149</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">4–6%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">AI feature wave, remote work, travel needs — multiple viral review videos</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=AI+Earbuds+Translation&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Home">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Home & Living</span>
+        <span class="growth-badge">▲ 8,300%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Boneless Couch</div>
+        <div class="product-desc">Modular foam couch that rearranges into any shape — floor seating, gaming pods, lounge beds. Gen Z's favorite furniture.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$399</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–4%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Gen Z home aesthetic, dorm rooms, gaming setups going viral on TikTok</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Boneless+Modular+Couch&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Fitness">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Fitness & Tech</span>
+        <span class="growth-badge">▲ 7,700%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Walking Pad</div>
+        <div class="product-desc">Slim under-desk treadmill for walking while working from home. Hit 10,000 steps without leaving your desk.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$249</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–5%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">WFH culture, standing desk trend, passive fitness going viral on productivity TikTok</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Walking+Pad+Under+Desk+Treadmill&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Health & Wellness</span>
+        <span class="growth-badge">▲ 7,200%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">GLP-1 Supplements</div>
+        <div class="product-desc">Natural supplements that mimic GLP-1 hormone for appetite control and weight management. The Ozempic alternative.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$59</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">20–40%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">ClickBank</span></div>
+        </div>
+        <div class="why-tag">Ozempic/Wegovy mainstream awareness, weight loss market, no-prescription alternative</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=GLP1+Natural+Supplement&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Skincare">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Skincare</span>
+        <span class="growth-badge">▲ 6,600%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Red Light Face Mask</div>
+        <div class="product-desc">LED red light therapy face mask for collagen, acne and anti-aging at home. Med-spa results, zero appointment needed.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$89</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">6–10%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Med-spa-at-home trend, skintellectual community, celebrity endorsements</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Red+Light+Therapy+Face+Mask&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Health & Biohacking</span>
+        <span class="growth-badge">▲ 5,500%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Cold Plunge Tub</div>
+        <div class="product-desc">Portable inflatable cold plunge tub for at-home cold water immersion therapy. Dopamine spike guaranteed.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$189</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–5%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Andrew Huberman's cold exposure protocols went viral. Wim Hof Method followers exploded.</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Portable+Cold+Plunge+Tub&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Skincare">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">K-Beauty</span>
+        <span class="growth-badge">▲ 5,600%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">PDRN Toner</div>
+        <div class="product-desc">Korean skincare toner with PDRN (salmon DNA) for intense skin repair and glass skin glow. TikTok's most talked-about ingredient.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$45</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">8–12%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">ShareASale</span></div>
+        </div>
+        <div class="why-tag">K-Beauty wave, glass skin aesthetic, skintellectual community going wild</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=PDRN+Toner+Korean+Skincare&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Fitness">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Fitness</span>
+        <span class="growth-badge">▲ 5,700%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Creatine Gummies</div>
+        <div class="product-desc">Chewable creatine supplement gummies — no mixing, no powder mess. The supplement upgrade everyone's switching to.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$35</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">4–8%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Creatine for women trend, fitness supplement market expansion, convenience factor</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Creatine+Gummies&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Biohacking</span>
+        <span class="growth-badge">▲ 4,800%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Mouth Tape for Sleep</div>
+        <div class="product-desc">Adhesive strips worn overnight to enforce nasal breathing — sleep deeper, snore less, wake up sharper.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$19</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–5%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">James Nestor's "Breath" and Andrew Huberman's protocols made mouth taping viral</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Mouth+Tape+Sleep&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Biohacking</span>
+        <span class="growth-badge">▲ 4,200%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Red Light Therapy Panel</div>
+        <div class="product-desc">Full-body red and near-infrared light therapy panels — reduce inflammation, boost energy, improve skin, accelerate recovery.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$299</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–5%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Featured by Andrew Huberman, Ben Greenfield — searches surged 4,200% since 2023</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Red+Light+Therapy+Panel&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Home">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Home & Living</span>
+        <span class="growth-badge">▲ 3,900%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Filtered Showerhead</div>
+        <div class="product-desc">Showerhead with built-in filters removing chlorine, heavy metals, and impurities. The secret to better hair and skin.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$110</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–4%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Dermatologists and beauty influencers going viral with before/after hair results</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Filtered+Showerhead&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Biohacking</span>
+        <span class="growth-badge">▲ 3,800%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Continuous Glucose Monitor</div>
+        <div class="product-desc">Wearable biosensor tracking blood sugar in real time — now used by healthy people to optimize energy, diet, and performance.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$199</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">10–20%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Impact.com</span></div>
+        </div>
+        <div class="why-tag">Levels Health and Dexcom made CGMs mainstream for wellness biohackers</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Continuous+Glucose+Monitor&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Nootropics</span>
+        <span class="growth-badge">▲ 3,700%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Lion's Mane Mushroom</div>
+        <div class="product-desc">Functional mushroom supplement proven to enhance memory, focus, and neuroplasticity. Nature's brain upgrade.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$49</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">5–8%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Paul Stamets' Joe Rogan appearance (100M+ views) made Lion's Mane mainstream</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Lions+Mane+Mushroom+Supplement&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Biohacking</span>
+        <span class="growth-badge">▲ 3,100%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Infrared Sauna Blanket</div>
+        <div class="product-desc">Portable blanket using far-infrared heat — detox, weight loss, deep relaxation and cardiovascular benefits at home.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$349</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">10–15%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">ShareASale</span></div>
+        </div>
+        <div class="why-tag">HigherDOSE sauna blanket went viral on TikTok and Instagram — celebrities swear by it</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Infrared+Sauna+Blanket&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Longevity</span>
+        <span class="growth-badge">▲ 2,900%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">NMN Supplement</div>
+        <div class="product-desc">NAD+ precursor backed by Harvard longevity research. David Sinclair's anti-aging supplement — reverse cellular aging.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$79</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">5–8%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">David Sinclair's longevity research put NMN on the map — searches exploded after podcast features</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=NMN+Supplement+NAD&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health Fitness">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Supplements</span>
+        <span class="growth-badge">▲ 4,800%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Magnesium Glycinate</div>
+        <div class="product-desc">High-absorption magnesium supplement for sleep, stress and muscle recovery. The Andrew Huberman-approved sleep hack.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$28</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">4–8%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Sleep epidemic, stress culture, wellness community — Andrew Huberman effect</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Magnesium+Glycinate&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Skincare">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">K-Beauty SPF</span>
+        <span class="growth-badge">▲ 4,200%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Birch Juice Sunscreen</div>
+        <div class="product-desc">Korean sunscreen with birch juice base — lightweight, dewy, no white cast. The SPF you'll actually want to wear.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$22</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">8–15%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">ShareASale</span></div>
+        </div>
+        <div class="why-tag">K-Beauty, SPF TikTok, no-white-cast revolution, skintellectual community</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Birch+Juice+Korean+Sunscreen&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Skincare">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Fragrance</span>
+        <span class="growth-badge">▲ 5,500%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Pistachio Perfume</div>
+        <div class="product-desc">A warm, nutty fragrance featuring sweet pistachio layered with vanilla and musk. The scent everyone is asking about.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$57</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">3–5%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Foodie fragrance trend exploding on TikTok's #PerfumeTok with millions of views</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Pistachio+Perfume&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Home">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Home / Sneakers</span>
+        <span class="growth-badge">▲ 5,800%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">Shoe Washing Bag</div>
+        <div class="product-desc">Mesh laundry bag designed for washing sneakers in the washing machine. The TikTok cleaning hack everyone needs.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$15</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">4–6%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Amazon</span></div>
+        </div>
+        <div class="why-tag">Sneaker culture, cleaning hacks TikTok, satisfying clean videos going viral</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=Shoe+Washing+Bag+Laundry&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="Health">
+      <div class="hot-indicator"></div>
+      <div class="card-header">
+        <span class="category-tag">Biohacking</span>
+        <span class="growth-badge">▲ 3,400%</span>
+      </div>
+      <div class="card-body">
+        <div class="product-name">BPC-157 Peptide</div>
+        <div class="product-desc">Synthetic peptide used by biohackers for rapid healing of joints, gut lining, and muscle injuries. Going mainstream fast.</div>
+        <div class="product-meta">
+          <div class="meta-item"><span class="meta-label">Avg Price</span><span class="meta-value">$89</span></div>
+          <div class="meta-item"><span class="meta-label">Commission</span><span class="meta-value gold">20–40%</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">ClickBank</span></div>
+        </div>
+        <div class="why-tag">Exploding on Reddit biohacking communities — athletes using it for injury recovery</div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-shop" href="https://www.amazon.com/s?k=BPC-157+Peptide+Supplement&tag=YOUR_TAG" target="_blank" rel="noopener">Shop Now →</a>
+      </div>
+    </div>
+
+  </div><!-- /product-grid -->
+</section>
+
+<!-- HOW IT WORKS -->
+<div style="background: var(--black2); border-top: 1px solid rgba(212,175,55,0.08); border-bottom: 1px solid rgba(212,175,55,0.08);">
+<section id="how">
+  <div class="section-header">
+    <div class="section-label">✦ The Process ✦</div>
+    <h2 class="section-title">How BigDawg's Store Works</h2>
+    <p class="section-subtitle">AI tracks what's going viral before it peaks — you shop what's already proven.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>AI Scans the Internet</h3>
+      <p>Every morning at 6 AM, our AI scans TikTok, Reddit, Pinterest, and Google Trends for products with explosive viral growth.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Growth Verified</h3>
+      <p>Only products with verified search growth over 500% make the cut. Backed by data, not guesswork.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Drops Published</h3>
+      <p>Products go live on this page with direct shopping links to Amazon, ClickBank, and top retailers.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>You Shop First</h3>
+      <p>By the time a product blows up mainstream, our community already knew about it — and many already bought it.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">BigDawg<span>'s Store</span></div>
+      <p class="footer-desc">The internet's most exclusive daily trending product drops. Curated by AI. Backed by data. Delivered with class. Updated every single day.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#products">Today's Drops</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#">All Categories</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#">Tech & AI</a></li>
+        <li><a href="#">Health & Biohacking</a></li>
+        <li><a href="#">Skincare & Beauty</a></li>
+        <li><a href="#">Home & Living</a></li>
+        <li><a href="#">Fashion</a></li>
+        <li><a href="#">Fitness</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 BigDawg's Store · All product links are affiliate links · <a href="#">Affiliate Disclosure</a> · <a href="#">Privacy Policy</a><br/>
+    <span style="margin-top: 6px; display: block; font-size: 11px; color: rgba(255,255,255,0.1);">bigdawgs-store-hotdeals-daily.vercel.app</span></p>
+  </div>
+</footer>
+
+<script>
+  function filterProducts(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      if (cat === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const categories = card.dataset.category || '';
+        if (categories.toLowerCase().includes(cat.toLowerCase())) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    });
+  }
+
+  // Animate cards on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(24px)';
+    card.style.transition = `opacity 0.4s ease ${i * 0.04}s, transform 0.4s ease ${i * 0.04}s, border-color 0.3s, box-shadow 0.3s`;
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>
