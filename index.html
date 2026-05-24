@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BigDawg's Store — What's Hot Today</title>
   <meta name="description" content="The internet's most exclusive daily trending product drops. Curated by AI. Backed by data. Delivered with class."/>
+
+  <!-- ─── PWA ─── -->
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#D4AF37"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="BigDawg's Store"/>
+  <link rel="apple-touch-icon" href="/icons/icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png"/>
+  <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144.png"/>
+  <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96.png"/>
+
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="BigDawg's Store — What's Hot Today"/>
+  <meta property="og:description" content="AI-curated trending products refreshed daily. Shop viral drops before the masses find out."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://bigdawgs-store-hotdeals-daily.vercel.app"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="BigDawg's Store — What's Hot Today"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
@@ -373,6 +396,104 @@
       background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
     }
 
+    /* ─── SEARCH BAR ─── */
+    .search-wrapper {
+      max-width: 640px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--black2);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 3px;
+      padding: 16px 56px 16px 20px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .search-input::placeholder { color: rgba(255,255,255,0.25); }
+    .search-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+    .search-icon {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(212,175,55,0.5);
+      font-size: 18px;
+      pointer-events: none;
+    }
+    .search-count {
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+    }
+    .search-count span { color: var(--gold); font-weight: 600; }
+    .no-results {
+      text-align: center;
+      padding: 80px 24px;
+      display: none;
+    }
+    .no-results h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .no-results p { color: var(--gray); font-size: 14px; }
+
+    /* ─── INSTALL BANNER ─── */
+    .install-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black2);
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 4px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 999;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      white-space: nowrap;
+      transition: opacity 0.3s;
+    }
+    .install-banner.hidden { display: none; }
+    .install-banner-text { font-size: 13px; color: var(--white2); }
+    .install-banner-text strong { color: var(--gold); }
+    .install-btn {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 9px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .install-btn:hover { background: var(--gold-light); }
+    .install-dismiss {
+      background: none;
+      border: none;
+      color: var(--gray);
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0 4px;
+    }
+
     /* ─── HIDDEN CARDS ─── */
     .product-card.hidden { display: none; }
 
@@ -549,6 +670,20 @@
     <p class="section-subtitle">Ranked by viral growth rate. Updated daily at 6 AM Pacific.</p>
   </div>
 
+  <!-- SEARCH BAR -->
+  <div class="search-wrapper">
+    <input
+      class="search-input"
+      id="searchInput"
+      type="text"
+      placeholder="Search trending products... (e.g. skincare, tech, fitness)"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <span class="search-icon">🔍</span>
+  </div>
+  <div class="search-count" id="searchCount"><span id="visibleCount">24</span> products showing</div>
+
   <div class="filters" id="filterBar">
     <button class="filter-btn active" onclick="filterProducts('all', this)">All Drops</button>
     <button class="filter-btn" onclick="filterProducts('Fashion', this)">Fashion</button>
@@ -559,6 +694,10 @@
     <button class="filter-btn" onclick="filterProducts('Fitness', this)">Fitness</button>
   </div>
 
+  <div class="no-results" id="noResults">
+    <h3>No Results Found</h3>
+    <p>Try a different search term or clear the filter above.</p>
+  </div>
   <div class="product-grid" id="productGrid">
 
     <div class="product-card" data-category="Fashion">
@@ -1135,25 +1274,74 @@
   </div>
 </footer>
 
+<!-- PWA Install Banner -->
+<div class="install-banner hidden" id="installBanner">
+  <div class="install-banner-text">📲 Add <strong>BigDawg's Store</strong> to your home screen</div>
+  <button class="install-btn" id="installBtn">Install App</button>
+  <button class="install-dismiss" id="installDismiss">✕</button>
+</div>
+
 <script>
+  // ─── STATE ───
+  let activeCategory = 'all';
+  let searchQuery = '';
+  let deferredPrompt = null;
+
+  // ─── FILTER + SEARCH ───
+  function applyFilters() {
+    const cards = document.querySelectorAll('.product-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const cat = (card.dataset.category || '').toLowerCase();
+      const name = (card.querySelector('.product-name')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('.product-desc')?.textContent || '').toLowerCase();
+      const why  = (card.querySelector('.why-tag')?.textContent || '').toLowerCase();
+      const catMatch = activeCategory === 'all' || cat.includes(activeCategory.toLowerCase());
+      const searchMatch = !searchQuery ||
+        name.includes(searchQuery) ||
+        desc.includes(searchQuery) ||
+        why.includes(searchQuery) ||
+        cat.includes(searchQuery);
+      if (catMatch && searchMatch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    document.getElementById('visibleCount').textContent = visible;
+    document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  }
+
   function filterProducts(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelectorAll('.product-card').forEach(card => {
-      if (cat === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        const categories = card.dataset.category || '';
-        if (categories.toLowerCase().includes(cat.toLowerCase())) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      }
-    });
+    activeCategory = cat;
+    applyFilters();
   }
 
-  // Animate cards on scroll
+  // ─── SEARCH INPUT ───
+  const searchInput = document.getElementById('searchInput');
+  let searchTimer;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      applyFilters();
+    }, 180);
+  });
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { searchInput.value = ''; searchQuery = ''; applyFilters(); }
+  });
+
+  // ─── URL CATEGORY PARAM ───
+  const urlCat = new URLSearchParams(window.location.search).get('cat');
+  if (urlCat) {
+    const btn = [...document.querySelectorAll('.filter-btn')].find(b => b.textContent.toLowerCase().includes(urlCat.toLowerCase()));
+    if (btn) filterProducts(urlCat, btn);
+  }
+
+  // ─── SCROLL ANIMATION ───
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1161,7 +1349,7 @@
         entry.target.style.transform = 'translateY(0)';
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   document.querySelectorAll('.product-card').forEach((card, i) => {
     card.style.opacity = '0';
@@ -1169,6 +1357,34 @@
     card.style.transition = `opacity 0.4s ease ${i * 0.04}s, transform 0.4s ease ${i * 0.04}s, border-color 0.3s, box-shadow 0.3s`;
     observer.observe(card);
   });
+
+  // ─── PWA INSTALL PROMPT ───
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(() => {
+      document.getElementById('installBanner').classList.remove('hidden');
+    }, 4000);
+  });
+
+  document.getElementById('installBtn').addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    document.getElementById('installBanner').classList.add('hidden');
+  });
+
+  document.getElementById('installDismiss').addEventListener('click', () => {
+    document.getElementById('installBanner').classList.add('hidden');
+  });
+
+  // ─── SERVICE WORKER ───
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+  }
 </script>
 </body>
 </html>
