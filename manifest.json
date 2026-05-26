@@ -1,55 +1,74 @@
 {
   "name": "BigDawg's Store — Hot Deals Daily",
   "short_name": "BigDawg's Store",
-  "description": "Discover today's most viral trending products. Updated daily with AI-powered deals across fashion, tech, beauty, health & more.",
+  "description": "Discover today's most viral trending products. Updated daily with AI-powered deals across fashion, tech, beauty, health & more. Shop the hottest items before they sell out.",
   "start_url": "/",
   "scope": "/",
+  "id": "/",
   "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay", "minimal-ui", "browser"],
   "orientation": "portrait-primary",
   "background_color": "#0a0a0a",
   "theme_color": "#D4AF37",
   "lang": "en-US",
   "dir": "ltr",
   "categories": ["shopping", "lifestyle", "entertainment"],
-  "screenshots": [
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "BigDawg's Store Home Screen"
-    }
-  ],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "prefer_related_applications": false,
+  "related_applications": [],
   "icons": [
     { "src": "/icons/icon-72.png",  "sizes": "72x72",   "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "/icons/icon-384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "BigDawg's Store — Trending Products Feed"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "BigDawg's Store — Desktop View"
+    }
   ],
   "shortcuts": [
     {
       "name": "Fashion Deals",
       "short_name": "Fashion",
-      "description": "Trending fashion products today",
+      "description": "Shop trending fashion products today",
       "url": "/?cat=fashion",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
       "name": "Tech Deals",
       "short_name": "Tech",
-      "description": "Trending tech products today",
+      "description": "Shop trending tech products today",
       "url": "/?cat=tech",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
       "name": "Beauty Deals",
       "short_name": "Beauty",
-      "description": "Trending beauty products today",
+      "description": "Shop trending beauty products today",
       "url": "/?cat=beauty",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Health Deals",
+      "short_name": "Health",
+      "description": "Shop trending health & wellness products",
+      "url": "/?cat=health",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     }
   ],
@@ -62,9 +81,39 @@
       "url": "url"
     }
   },
-  "prefer_related_applications": false,
-  "display_override": ["standalone", "minimal-ui", "browser"],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
   "edge_side_panel": {
     "preferred_width": 400
-  }
+  },
+  "scope_extensions": [
+    { "origin": "https://bigdawgs-store.vercel.app" },
+    { "origin": "https://bigdawgs-store-hotdeals-daily.vercel.app" }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+bigdawgs",
+      "url": "/?product=%s"
+    }
+  ],
+  "widgets": [
+    {
+      "name": "Hot Deal of the Day",
+      "description": "Today's top trending product deal",
+      "tag": "hot-deal",
+      "template": "productWidget",
+      "ms_ac_template": "widget/product.json",
+      "icon": "/icons/icon-96.png",
+      "screenshots": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "label": "Hot Deal Widget"
+        }
+      ],
+      "auth": false,
+      "update": 86400
+    }
+  ]
 }
